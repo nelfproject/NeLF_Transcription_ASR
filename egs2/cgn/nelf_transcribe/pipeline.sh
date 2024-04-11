@@ -4,66 +4,7 @@ echo "JOB: pipeline.sh $@"
 
 inputfile=$1
 
-# default settings
-VERSION="v2"
-VADMODEL="CRDNN"
-MODELTYPE="transcribe"
-DEVICE="GPU"
-ANNOTATION="both"
-FORMATTING="clean"
-TIMESTAMPS="timestamps"
-
-# parse parameters
-while [[ $# -gt 0 ]]; do
-    key="$1"
-    case "$key" in
-	# model version: v1 or v2 (latest)
-        --version)
-        shift
-	VERSION="$1"
-        ;;
-	# vad type: rvad or cdrnn
-	--vad)
-	shift
-	VADMODEL="$1"
-	;;
-	# model type: wordtiming or transcription (=best)
-	--type)
-	shift
-	MODELTYPE="$1"
-	;;
-	# cpu or gpu
-	--device)
-	shift
-	DEVICE="$1"
-	;;
-	# annotation to generate: subtitle, verbatim or both
-	--annot)
-	shift
-	ANNOTATION="$1"
-	;;
-	# cleanup settings: include tags or not
-	--formatting)
-	shift
-	FORMATTING="$1"
-	;;
-	# output settings: include vad timestamps or not
-	--timestamps)
-	shift
-	TIMESTAMPS="$1"
-	;;
-        *)
-        # Unknown options or input/output stuff
-        ;;
-    esac
-    shift
-done
-
-if [ $DEVICE = "GPU" ]; then
-  ngpu=1
-else
-  ngpu=0
-fi
+. ./parse_parameters.sh $@
 
 . ./path.sh
 . ./cmd.sh
@@ -80,7 +21,7 @@ echo "Working directory: $scratchdir"
 
 # 1. Check if all models are correctly downloaded
 echo "### Check required models ###"
-. check_models.sh $VADMODEL $VERSION $MODELTYPE
+. check_models.sh $VERSION $ANNOTATION $MODELTYPE $VADMODEL
 
 # 2. Convert to correct wav format
 echo "### Extracting 16kHz/mono wav from input ###"
@@ -112,5 +53,5 @@ echo '### Cleaning output ###'
 echo '### Saving parameter settings ###'
 . write_params.sh $scratchdir $fileid $VERSION $VADMODEL $MODELTYPE $ANNOTATION $FORMATTING $TIMESTAMPS
 
-echo 'DONE: Saved output at $scratchdir/result'
+echo 'DONE: Saved output at ${scratchdir}/result'
 
