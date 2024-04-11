@@ -1,5 +1,4 @@
-# Updated: Jakob Poncelet, 10/04/2024
-
+# Next Level Flemish Speech Recognition
 This is a separate branch of the ESPnet toolkit with new neural networks for ASR on Flemish Dutch. This repository contains all the code to use the ASR models from the NeLF Project, which aims to attain Next Level Flemish Speech Processing with state-of-the-art Flemish Dutch speech recognition models.
 
 This codebase is required to use the pre-trained ASR models from https://huggingface.co/nelfproject.
@@ -24,3 +23,4 @@ For more information about Flemish Speech recognition in the NeLF project, visit
 
 We also offer a webservice to transcribe audio for you, if you request access.
 
+**version: 11/04/2024 (Jakob Poncelet)
