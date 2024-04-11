@@ -1,4 +1,4 @@
-# Created by: Jakob Poncelet, 10/04/2024
+# NeLF ASR Transcriptions
 
 This directory contains all scripts to transcribe and annotate speech with NeLF models.
 
@@ -51,3 +51,5 @@ The possible settings are:
 # Contact
 For any help or questions, feel free to contact me.
 Jakob Poncelet: jakob.poncelet@kuleuven.be
+
+**verion**: 11/04/2024 (Jakob Poncelet)
