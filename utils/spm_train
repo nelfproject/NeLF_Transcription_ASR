@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+# Copyright (c) Facebook, Inc. and its affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# https://github.com/pytorch/fairseq/blob/master/LICENSE
+import sys
+import argparse
+import sentencepiece as spm
+
+if __name__ == "__main__":
+    # spm.SentencePieceTrainer.Train(" ".join(sys.argv[1:]))
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input", help="text to train bpe model")
+    parser.add_argument("--vocab_size", type=int, help="number of bpe if bpe is used")
+    parser.add_argument("--model_type", help="bpe mode")
+    parser.add_argument("--model_prefix", help="bpe prefix")
+    parser.add_argument("--character_coverage", help="character coverage")
+    parser.add_argument("--input_sentence_size", type=int, help="input_len")
+    parser.add_argument("--split_digits", type=bool, help="split digits")
+    parser.add_argument("--user_defined_symbols", type=str, help="nlsyms")
+    args = parser.parse_args()
+
+    print(args)
+
+    if len(args.user_defined_symbols.split('|')) > 3:
+        bpe_nl_syms = args.user_defined_symbols.split('|')
+    else:
+        bpe_nl_syms = args.user_defined_symbols.split(',')
+
+    print(bpe_nl_syms)
+
+    spm.SentencePieceTrainer.train(input=args.input, vocab_size=args.vocab_size, model_prefix=args.model_prefix, model_type=args.model_type, character_coverage=args.character_coverage, input_sentence_size=args.input_sentence_size, split_digits=args.split_digits, user_defined_symbols=bpe_nl_syms)
