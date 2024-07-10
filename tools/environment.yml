@@ -124,6 +124,7 @@ dependencies:
     - docker-pycreds==0.4.0
     - editdistance==0.6.2
     - einops==0.7.0
+    - espnet-tts-frontend==0.0.3
     - ffmpeg-python==0.2.0
     - fonttools==4.44.0
     - fsspec==2023.10.0
