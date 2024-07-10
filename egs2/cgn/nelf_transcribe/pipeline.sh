@@ -15,7 +15,7 @@ curdir=`pwd`
 filename=$(basename "$inputfile")
 extension="${filename##*.}"
 fileid=$(basename "$filename" .$extension)
-scratchdir=./scratch/$(fileid)_$(date +"%y_%m_%d_%H_%M_%S_%N")
+scratchdir=./scratch/${fileid}_$(date +"%y_%m_%d_%H_%M_%S_%N")
 mkdir -p $scratchdir || fatalerror "Unable to create temporary working directory $scratchdir"
 echo "Working directory: $scratchdir"
 
