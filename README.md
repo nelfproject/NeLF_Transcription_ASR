@@ -3,18 +3,46 @@ This is a separate branch of the ESPnet toolkit with new neural networks for ASR
 
 This codebase is required to use the pre-trained ASR models from https://huggingface.co/nelfproject.
 
-# Installation
-To use this repository, first setup your environment. An environment.yml file has been included in tools/ to build an environment with working version dependencies. 
+# Installation 
+The installation procedure closely follows the espnet installation (https://espnet.github.io/espnet/installation.html), but it is simplified by recreating a working environment.
+Please follow the steps below.
 
-Using conda:    
-      conda env create -f environment.yml
+1) Install Kaldi (external installation: https://kaldi-asr.org/doc/install.html).
+2) Install Anaconda (external installation: https://docs.anaconda.com/anaconda/install/).
+3) Clone this repository:
+   
+     cd <any-place>
+     git clone https://github.com/nelfproject/NeLF_Transcription_ASR
+   
+5) Put the compiled Kaldi under tools. The kaldi-root is the path <...>/kaldi after installation.
+   
+     cd tools
+     ln -s <kaldi-root> .
+   
+7) Create the conda environment from the environment.yml file. 
+    (see https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file). 
 
-(see https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file). 
+     cd tools
+     conda env create -f environment.yml
+   
+8) Activate the conda environment.
+   
+     conda activate nelf
+   
+10) Add the conda environment to the espnet installation. 
+   The CONDA_ROOT is the place where your Anaconda is installed, e.g. <...>/anaconda3.
+   You can also get it automatically from the CONDA_PREFIX variable which is set by Anaconda after installing and activating an environment.
 
-Next, follow the ESPnet installation procedure to install all the tools. The instalation is detailed in https://espnet.github.io/espnet/installation.html . Make sure to include step 1 (kaldi installation). In step 2, clone this code branch instead of the master espnet branch and use your previously built environment.
+   cd tools
+   CONDA_ROOT=${CONDA_PREFIX}/../..
+
+   ./setup_anaconda.sh ${CONDA_ROOT} nelf 3.11
+
+Now you have finished the installation for this espnet branch.
+You don't have to run the Makefile, the environment.yml contains all the packages.
 
 # Usage
-After installing all the tools, packages and dependencies, you can start using our ASR models to transcribe Flemish audio!
+After installation, you can start using our ASR models to transcribe Flemish audio!
 
 Go to egs2/cgn/nelf_transcribe and follow the instructions.
 
