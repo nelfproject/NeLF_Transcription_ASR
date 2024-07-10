@@ -11,34 +11,37 @@ Please follow the steps below.
 2) Install Anaconda (external installation: https://docs.anaconda.com/anaconda/install/).
 3) Clone this repository:
    
-     cd <any-place>
      git clone https://github.com/nelfproject/NeLF_Transcription_ASR
    
-5) Put the compiled Kaldi under tools. The kaldi-root is the path <...>/kaldi after installation.
+4) Put the compiled Kaldi under tools. The kaldi-root is the path to directory 'kaldi' after installation.
    
      cd tools
-     ln -s <kaldi-root> .
    
-7) Create the conda environment from the environment.yml file. 
+     ln -s KALDI_ROOT .
+   
+5) Create the conda environment from the environment.yml file. 
     (see https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file). 
 
      cd tools
+   
      conda env create -f environment.yml
    
-8) Activate the conda environment.
+6) Activate the conda environment.
    
      conda activate nelf
    
-10) Add the conda environment to the espnet installation. 
-   The CONDA_ROOT is the place where your Anaconda is installed, e.g. <...>/anaconda3.
+7) Add the conda environment to the espnet installation.
+   The CONDA_ROOT is the place where your Anaconda is installed, e.g. ./anaconda3.
    You can also get it automatically from the CONDA_PREFIX variable which is set by Anaconda after installing and activating an environment.
 
    cd tools
+   
    CONDA_ROOT=${CONDA_PREFIX}/../..
 
    ./setup_anaconda.sh ${CONDA_ROOT} nelf 3.11
 
 Now you have finished the installation for this espnet branch.
+
 You don't have to run the Makefile, the environment.yml contains all the packages.
 
 # Usage
