@@ -55,3 +55,17 @@ For more information about Flemish Speech recognition in the NeLF project, visit
 We also offer a webservice to transcribe audio for you, if you request access.
 
 **version: 11/04/2024 (Jakob Poncelet)
+
+# Research paper
+The models, training data and experiments are described in the following paper: https://arxiv.org/abs/2502.03212 
+If you use our code and models, please consider citing it.
+
+```bibtex
+@article{poncelet2024,
+    author = "Poncelet, Jakob and Van hamme, Hugo",
+    title = "Leveraging Broadcast Media Subtitle Transcripts for Automatic Speech Recognition and Subtitling",
+    year={2024},
+    journal={arXiv preprint arXiv:2502.03212},
+    url = {https://arxiv.org/abs/2502.03212}
+}
+
