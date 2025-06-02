@@ -2,7 +2,7 @@
 
 # defaults
 VERSION="v2"
-VADMODEL="CRDNN"
+VADMODEL="rVAD"
 MODELTYPE="transcribe"
 DEVICE="GPU"
 ANNOTATION="both"
